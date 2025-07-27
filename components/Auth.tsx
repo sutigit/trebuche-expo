@@ -3,29 +3,56 @@ import { FormControl, FormControlError, FormControlErrorText, FormControlErrorIc
 import { Input, InputField } from "@/components/ui/input";
 import { VStack } from "@/components/ui/vstack";
 import { AlertCircleIcon } from "@/components/ui/icon";
-import React from "react";
+import React, { useState } from "react";
+import supabase from "../lib/supabase"
 
-export default function LoginView() {
-    const [isInvalidEmail, setIsInvalidEmail] = React.useState(false);
-    const [inputValueEmail, setInputValueEmail] = React.useState('');
-    const [isInvalidPassword, setIsInvalidPassword] = React.useState(false);
-    const [inputValuePassword, setInputValuePassword] = React.useState('');
+export default function Auth() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [isInvalidEmail, setIsInvalidEmail] = useState(false);
+    const [isInvalidPassword, setIsInvalidPassword] = useState(false);
+    const [isInvalidCredentials, setIsInvalidCredentials] = useState(false);
 
-    const handleSubmit = () => {
+    async function signInWithEmail() {
+        setLoading(true)
 
-        if (inputValueEmail.length < 1) {
+        console.log("📌 doing something")
+
+        if (email.length < 1) {
             setIsInvalidEmail(true)
+            setLoading(false)
             return
+        } else {
+            setIsInvalidEmail(false)
         }
 
-        if (inputValuePassword.length < 1) {
-            setIsInvalidPassword(true);
+        if (password.length < 1) {
+            setIsInvalidPassword(true)
+            setLoading(false)
             return
+        } else {
+            setIsInvalidPassword(false)
         }
 
-        setIsInvalidEmail(false)
-        setIsInvalidPassword(false);
-    };
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        })
+
+        if (error) {
+            setIsInvalidCredentials(true)
+            setLoading(false)
+            return
+        } else {
+            setIsInvalidCredentials(false)
+        }
+
+        if (data) {
+            console.log(data)
+        }
+        setLoading(false)
+    }
 
     return (
         <VStack className="w-full max-w-96 rounded-xl border border-background-200 p-5 gap-3">
@@ -37,8 +64,8 @@ export default function LoginView() {
                     <InputField
                         type="text"
                         placeholder="sposti"
-                        value={inputValueEmail}
-                        onChangeText={(text) => setInputValueEmail(text)}
+                        value={email}
+                        onChangeText={(text) => setEmail(text)}
                     />
                 </Input>
                 <FormControlError>
@@ -57,8 +84,8 @@ export default function LoginView() {
                     <InputField
                         type="password"
                         placeholder="passu"
-                        value={inputValuePassword}
-                        onChangeText={(text) => setInputValuePassword(text)}
+                        value={password}
+                        onChangeText={(text) => setPassword(text)}
                     />
                 </Input>
                 <FormControlError>
@@ -68,7 +95,17 @@ export default function LoginView() {
                     </FormControlErrorText>
                 </FormControlError>
             </FormControl>
-            <Button className="w-fit self-end mt-4" size="sm" onPress={handleSubmit}>
+
+            <FormControl isInvalid={isInvalidCredentials} size="md" isDisabled={false} isReadOnly={true} isRequired={false} >
+                <FormControlError>
+                    <FormControlErrorIcon as={AlertCircleIcon} />
+                    <FormControlErrorText>
+                        Aijjj... ei menny oikein
+                    </FormControlErrorText>
+                </FormControlError>
+            </FormControl>
+
+            <Button className="w-fit self-end" size="sm" onPress={signInWithEmail} disabled={loading}>
                 <ButtonText>Noniin</ButtonText>
             </Button>
         </VStack>
