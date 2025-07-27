@@ -12,23 +12,31 @@ export default function LoginView() {
     const [inputValuePassword, setInputValuePassword] = React.useState('');
 
     const handleSubmit = () => {
-        if (inputValuePassword.length < 6) {
-            setIsInvalidPassword(true);
-        } else {
-            setIsInvalidPassword(false);
+
+        if (inputValueEmail.length < 1) {
+            setIsInvalidEmail(true)
+            return
         }
+
+        if (inputValuePassword.length < 1) {
+            setIsInvalidPassword(true);
+            return
+        }
+
+        setIsInvalidEmail(false)
+        setIsInvalidPassword(false);
     };
 
     return (
-        <VStack className="w-full max-w-96 rounded-md border border-background-200 p-5 gap-3">
+        <VStack className="w-full max-w-96 rounded-xl border border-background-200 p-5 gap-3">
             <FormControl isInvalid={isInvalidEmail} size="md" isDisabled={false} isReadOnly={false} isRequired={false} >
                 <FormControlLabel>
-                    <FormControlLabelText>Email</FormControlLabelText>
+                    <FormControlLabelText>Sähköposti</FormControlLabelText>
                 </FormControlLabel>
                 <Input className="my-1">
                     <InputField
                         type="text"
-                        placeholder="email"
+                        placeholder="sposti"
                         value={inputValueEmail}
                         onChangeText={(text) => setInputValueEmail(text)}
                     />
@@ -36,19 +44,19 @@ export default function LoginView() {
                 <FormControlError>
                     <FormControlErrorIcon as={AlertCircleIcon} />
                     <FormControlErrorText>
-                        Atleast 6 characters are required.
+                        Buche, unohdit sun mailin
                     </FormControlErrorText>
                 </FormControlError>
             </FormControl>
 
             <FormControl isInvalid={isInvalidPassword} size="md" isDisabled={false} isReadOnly={false} isRequired={false} >
                 <FormControlLabel>
-                    <FormControlLabelText>Password</FormControlLabelText>
+                    <FormControlLabelText>Passu</FormControlLabelText>
                 </FormControlLabel>
                 <Input className="my-1">
                     <InputField
                         type="password"
-                        placeholder="password"
+                        placeholder="passu"
                         value={inputValuePassword}
                         onChangeText={(text) => setInputValuePassword(text)}
                     />
@@ -56,12 +64,12 @@ export default function LoginView() {
                 <FormControlError>
                     <FormControlErrorIcon as={AlertCircleIcon} />
                     <FormControlErrorText>
-                        Atleast 6 characters are required.
+                        Passu ei voi olla tyhjä
                     </FormControlErrorText>
                 </FormControlError>
             </FormControl>
             <Button className="w-fit self-end mt-4" size="sm" onPress={handleSubmit}>
-                <ButtonText>Login</ButtonText>
+                <ButtonText>Noniin</ButtonText>
             </Button>
         </VStack>
     );
