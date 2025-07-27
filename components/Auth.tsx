@@ -17,8 +17,6 @@ export default function Auth() {
     async function signInWithEmail() {
         setLoading(true)
 
-        console.log("📌 doing something")
-
         if (email.length < 1) {
             setIsInvalidEmail(true)
             setLoading(false)
