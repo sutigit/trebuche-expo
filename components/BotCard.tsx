@@ -22,10 +22,6 @@ export default function BotCard({ bot, session }: { bot: Tables<'default_bots'>,
         }
     }
 
-    function handleCloseAlert() {
-        setAlert(false)
-    }
-
     return (
         <Box className='px-8 rounded-2xl bg-white/10 backdrop-blur-md'>
             <Box className='absolute -top-3 left-6 flex-row items-center gap-4'>
@@ -59,7 +55,7 @@ export default function BotCard({ bot, session }: { bot: Tables<'default_bots'>,
                     <Text size="xs">Muokkaa</Text>
                 </Pressable>
             </Box>
-            <LoginAlert isOpen={alert} handleClose={handleCloseAlert} />
+            <LoginAlert isOpen={alert} handleClose={() => setAlert(false)} />
         </Box>
     )
 }
