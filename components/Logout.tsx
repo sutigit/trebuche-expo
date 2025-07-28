@@ -26,7 +26,7 @@ export default function Logout({ user }: { user: User }) {
     return (
         <Box>
             <Text>
-                Sehän on <Text className='text-orange-400'>{user.email}</Text>, perkele!
+                Sehän on <Text className='text-indigo-300'>{user.email}</Text>, perkele!
             </Text>
             <Button className="w-fit mt-5" size="sm" onPress={signOut} disabled={loading}>
                 <ButtonText>Kirjaudu ulos jo</ButtonText>

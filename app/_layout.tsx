@@ -56,8 +56,7 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  // const colorScheme = useColorScheme();
-  const colorScheme = 'dark'
+  const colorScheme = useColorScheme();
 
   return (
     <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>

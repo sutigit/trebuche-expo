@@ -3,14 +3,14 @@ import { Box } from "@/components/ui/box";
 import { Text } from "@/components/ui/text";
 import { Heading } from "@/components/ui/heading"
 import { Session } from '@supabase/supabase-js'
-import supabase from "../lib/supabase"
+import supabase from "../../lib/supabase"
 import { Image } from "@/components/ui/image"
 import { useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Login from "@/components/Login";
 import Logout from "@/components/Logout";
 
-export default function Home() {
+export default function ProfileScreen() {
   const [session, setSession] = useState<Session | null>(null)
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Home() {
   }, [])
 
   return (
-    <Box className="flex-1 pt-36 items-center bg-zinc-950">
+    <Box className="flex-1 pt-40 items-center bg-zinc-900">
       <StatusBar style="light" />
       <Image
         source={{ uri: "https://i.pinimg.com/736x/58/7b/57/587b57f888b1cdcc0e895cbdcfde1c1e.jpg" }}
