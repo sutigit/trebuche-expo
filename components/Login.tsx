@@ -47,13 +47,13 @@ export default function Login() {
         }
 
         if (data) {
-            console.log(data)
+            console.log("Moro", data.user.email)
         }
         setLoading(false)
     }
 
     return (
-        <VStack className="w-full max-w-96 p-6 gap-6">
+        <VStack className="w-full max-w-96 py-6 gap-6">
             <FormControl isInvalid={isInvalidEmail} size="md" isDisabled={false} isReadOnly={false} isRequired={false} >
                 <FormControlLabel>
                     <FormControlLabelText>Sähköposti</FormControlLabelText>
