@@ -46,7 +46,7 @@ export default function BotsScreen() {
   }
 
   return (
-    <Box className="flex-1 bg-transparent py-24 px-4 gap-3">
+    <Box className="flex-1 bg-transparent py-24 px-5 gap-12">
       {bots.map((bot, i) =>
         (<BotCard key={i} bot={bot} />)
       )}
