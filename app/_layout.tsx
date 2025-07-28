@@ -12,7 +12,7 @@ import { StatusBar } from "expo-status-bar";
 import { Slot } from "expo-router";
 
 import "../global.css";
-import StarrySky from "@/components/StarrySkyBG";
+import StarrySkyBG from "@/components/StarrySkyBG";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -64,7 +64,7 @@ function RootLayoutNav() {
     <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <StatusBar style="light" />
-        <StarrySky />
+        <StarrySkyBG />
         <Slot />
       </ThemeProvider>
     </GluestackUIProvider>

@@ -45,6 +45,7 @@ export default function IdeasScreen() {
 
   return (
     <Box className="flex-1 pt-40 items-center">
+      <StatusBar style="light" />
       {session && session.user && <Text>Hello {session.user.email}</Text>}
     </Box>
   )

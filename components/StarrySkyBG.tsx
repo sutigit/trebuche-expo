@@ -71,28 +71,28 @@ const html = `
   </html>
 `;
 
-export default function StarrySky() {
-    return (
-        <View style={styles.container}>
-            <WebView
-                originWhitelist={['*']}
-                source={{ html }}
-                style={StyleSheet.absoluteFill}
-                scrollEnabled={false}
-                javaScriptEnabled
-                domStorageEnabled
-            />
-        </View>
-    );
+export default function StarrySkyBG() {
+  return (
+    <View style={styles.container}>
+      <WebView
+        originWhitelist={['*']}
+        source={{ html }}
+        style={StyleSheet.absoluteFill}
+        scrollEnabled={false}
+        javaScriptEnabled
+        domStorageEnabled
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0
-    },
+  container: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
 });

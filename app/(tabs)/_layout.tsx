@@ -31,6 +31,7 @@ export default function TabLayout() {
           shadowRadius: 20,
           height: 70
         },
+        sceneStyle: { backgroundColor: 'transparent' }
       }}>
 
       <Tabs.Screen
