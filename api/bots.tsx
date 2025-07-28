@@ -11,3 +11,13 @@ export async function fetchDefaultBots(): Promise<Tables<'default_bots'>[]> {
         throw new Error(`Failed to fetch bots for user: ${err}`)
     }
 }
+
+export async function fetchDefaultBot(id: string): Promise<Tables<'default_bots'>> {
+    try {
+        const res = await fetch(`${base_url}/bots/default/${id}`)
+        const { data } = await res.json()
+        return data
+    } catch (err) {
+        throw new Error(`Failed to fetch bots for user: ${err}`)
+    }
+}

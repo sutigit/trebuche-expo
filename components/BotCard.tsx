@@ -29,7 +29,7 @@ export default function BotCard({ bot, session }: { bot: Tables<'default_bots'>,
                 <Heading>{bot.name}</Heading>
             </Box>
             <Box className='pt-12 pb-5 border-b border-zinc-700'>
-                <Text size='sm'>
+                <Text size='sm' className='leading-6'>
                     {bot.description}
                 </Text>
             </Box>
