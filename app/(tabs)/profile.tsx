@@ -21,8 +21,7 @@ export default function ProfileScreen() {
   }, [])
 
   return (
-    <Box className="flex-1 pt-40 items-center bg-zinc-900">
-      <StatusBar style="light" />
+    <Box className="flex-1 pt-40 items-center bg-transparent">
       <Image
         source={{ uri: "https://i.pinimg.com/736x/58/7b/57/587b57f888b1cdcc0e895cbdcfde1c1e.jpg" }}
         alt="profile-image"

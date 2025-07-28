@@ -8,10 +8,11 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState, useLayoutEffect } from "react";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { useColorScheme } from "@/components/useColorScheme";
+import { StatusBar } from "expo-status-bar";
 import { Slot } from "expo-router";
 
 import "../global.css";
+import StarrySky from "@/components/StarrySkyBG";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -62,6 +63,8 @@ function RootLayoutNav() {
   return (
     <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <StatusBar style="light" />
+        <StarrySky />
         <Slot />
       </ThemeProvider>
     </GluestackUIProvider>

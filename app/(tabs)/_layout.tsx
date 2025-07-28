@@ -4,20 +4,20 @@ import React from 'react';
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { useThemeColor } from '@/components/Themed';
+import colors from "tailwindcss/colors"
 
 export default function TabLayout() {
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "rgb(229, 229, 231)", // ad hoc: coming from DarkTheme component.
+        tabBarActiveTintColor: colors.indigo[300], // ad hoc: coming from DarkTheme component.
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: {
           position: 'absolute',
-          backgroundColor: '#27272a', // bg-zinc-800
+          backgroundColor: colors.zinc[800],
           borderTopWidth: 0,
           paddingTop: 10,
           paddingBottom: 0,
