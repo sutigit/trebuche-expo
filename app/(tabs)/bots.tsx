@@ -48,7 +48,7 @@ export default function BotsScreen() {
       <ScrollView>
         <Box className="flex-1 pb-20 pt-5 px-5 gap-12">
           {bots.map((bot, i) =>
-            (<BotCard key={i} bot={bot} />)
+            (<BotCard key={i} bot={bot} session={session} />)
           )}
         </Box>
       </ScrollView>
