@@ -53,7 +53,7 @@ export default function Login() {
     }
 
     return (
-        <VStack className="w-full max-w-96 bg-[#1e1e21] rounded-xl p-6 gap-6">
+        <VStack className="w-full max-w-96 p-6 gap-6">
             <FormControl isInvalid={isInvalidEmail} size="md" isDisabled={false} isReadOnly={false} isRequired={false} >
                 <FormControlLabel>
                     <FormControlLabelText>Sähköposti</FormControlLabelText>
