@@ -53,12 +53,12 @@ export default function Login() {
     }
 
     return (
-        <VStack className="w-full max-w-96 rounded-xl border border-background-100 p-5 gap-3">
+        <VStack className="w-full max-w-96 bg-[#1e1e21] rounded-xl p-6 gap-6">
             <FormControl isInvalid={isInvalidEmail} size="md" isDisabled={false} isReadOnly={false} isRequired={false} >
                 <FormControlLabel>
                     <FormControlLabelText>Sähköposti</FormControlLabelText>
                 </FormControlLabel>
-                <Input className="my-1">
+                <Input className="my-1" variant="underlined">
                     <InputField
                         type="text"
                         placeholder="sposti"
@@ -78,7 +78,7 @@ export default function Login() {
                 <FormControlLabel>
                     <FormControlLabelText>Passu</FormControlLabelText>
                 </FormControlLabel>
-                <Input className="my-1">
+                <Input className="my-1" variant="underlined">
                     <InputField
                         type="password"
                         placeholder="passu"

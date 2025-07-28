@@ -17,7 +17,7 @@ export default function TabLayout() {
         tabBarBackground: TabBarBackground,
         tabBarStyle: {
           position: 'absolute',
-          backgroundColor: '#1e1e21', // Tailwind indigo-300
+          backgroundColor: '#1e1e21',
           borderTopWidth: 0,
           paddingTop: 10,
           paddingBottom: 0,
