@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@/components/ui/box";
-import { Text } from "@/components/ui/text";
-import { Heading } from "@/components/ui/heading"
-import { StatusBar } from "expo-status-bar";
 import { Session } from '@supabase/supabase-js'
 import supabase from "../../lib/supabase"
 import { fetchDefaultBots } from "@/api/bots";
@@ -10,6 +7,7 @@ import { Spinner } from "@/components/ui/spinner"
 import colors from "tailwindcss/colors"
 import { Tables } from "@/lib/supabase.types";
 import BotCard from "@/components/BotCard";
+import { ScrollView } from "@/components/ui/scroll-view";
 
 export default function BotsScreen() {
   const [session, setSession] = useState<Session | null>(null)
@@ -46,10 +44,14 @@ export default function BotsScreen() {
   }
 
   return (
-    <Box className="flex-1 bg-transparent py-24 px-5 gap-12">
-      {bots.map((bot, i) =>
-        (<BotCard key={i} bot={bot} />)
-      )}
+    <Box className="max-h-screen flex-1 overflow-hidden pt-16 pb-[65px]">
+      <ScrollView>
+        <Box className="flex-1 pb-20 pt-5 px-5 gap-12">
+          {bots.map((bot, i) =>
+            (<BotCard key={i} bot={bot} />)
+          )}
+        </Box>
+      </ScrollView>
     </Box>
   )
 }
