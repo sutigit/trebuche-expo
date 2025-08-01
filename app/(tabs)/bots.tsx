@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@/components/ui/box";
-import { fetchUsersBots } from "@/api/supabase/bots";
+import { fetchBots } from "@/api/supabase/bots";
 import { Spinner } from "@/components/ui/spinner"
 import colors from "tailwindcss/colors"
 import { Tables } from "@/lib/supabase.types";
@@ -15,9 +15,8 @@ export default function BotsScreen() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!session || !session.user) return
 
-    fetchUsersBots(session.user.id)
+    fetchBots()
       .then((bots) => {
         setBots(bots)
       })
@@ -28,15 +27,8 @@ export default function BotsScreen() {
         setLoading(false)
       })
 
-  }, [session])
+  }, [])
 
-  if (!session || !session.user) {
-    return (
-      <Box className="flex-1 justify-center items-center">
-        <Text>Kirjaudu</Text>
-      </Box>
-    )
-  }
 
   if (loading) {
     return (

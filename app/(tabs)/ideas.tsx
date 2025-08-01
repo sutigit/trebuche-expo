@@ -22,17 +22,6 @@ export default function IdeasScreen() {
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
-
-    // fetchDefaultBots()
-    //   .then((bots) => {
-    //     setBots(bots)
-    //   })
-    //   .catch((err) => {
-    //     console.error("📌 error", err)
-    //   })
-    //   .finally(() => {
-    //     setLoading(false)
-    //   })
   }, [])
 
   if (loading) {

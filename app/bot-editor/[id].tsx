@@ -23,8 +23,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Spinner } from "@/components/ui/spinner"
 import { ScrollView } from "@/components/ui/scroll-view";
 import colors from "tailwindcss/colors"
-import { fetchDefaultBot } from '@/api/supabase/bots';
-import { Tables } from '@/lib/supabase.types';
+import { fetchBotById } from '@/api/supabase/bots';
 import { Heading } from '@/components/ui/heading';
 
 
@@ -55,12 +54,14 @@ export default function BotEditor() {
         if (!id) return;
 
         const normalizedId = Array.isArray(id) ? id[0] : id;
-        fetchDefaultBot(normalizedId)
-            .then((bot: Tables<'bots'>) => {
-                setName(bot.name)
-                setDescription(bot.description)
-                setInstructions(bot.prompt)
-                setColor(bot.color)
+        fetchBotById(normalizedId)
+            .then((bot) => {
+                if (bot) {
+                    setName(bot.name)
+                    setDescription(bot.description)
+                    setInstructions(bot.prompt)
+                    setColor(bot.color)
+                }
             })
             .catch((err) => {
                 console.error("📌 error", err)
