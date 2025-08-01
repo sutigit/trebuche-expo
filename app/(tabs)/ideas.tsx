@@ -6,6 +6,7 @@ import { ScrollView } from "@/components/ui/scroll-view";
 import colors from "tailwindcss/colors"
 import { fetchConversations } from "@/api/supabase/conversations";
 import ConversationCard from "@/components/ConversationCard";
+import { View } from "react-native";
 
 export default function IdeasScreen() {
   const [conversations, setConversations] = useState<Tables<'conversations'>[]>([])
@@ -37,10 +38,16 @@ export default function IdeasScreen() {
   return (
     <Box className="max-h-screen flex-1 overflow-hidden pt-16 pb-[65px]">
       <ScrollView>
-        <Box className="flex-1 pb-20 pt-5 px-6 gap-10 divided">
+        <Box className="flex-1 pb-20 pt-5 px-0 gap-10">
           {/* {conversations?.map((conversation, i) => (<ConversationCard key={i} conversation={conversation} />))} */}
           <ConversationCard conversation={conversations[0]} />
+          <View className="border-b border-white/15" />
           <ConversationCard conversation={conversations[0]} />
+          <View className="border-b border-white/15" />
+          <ConversationCard conversation={conversations[0]} />
+          <View className="border-b border-white/15" />
+          <ConversationCard conversation={conversations[0]} />
+          <View className="border-b border-white/15" />
           <ConversationCard conversation={conversations[0]} />
         </Box>
       </ScrollView>
