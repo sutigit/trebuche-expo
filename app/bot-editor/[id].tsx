@@ -23,7 +23,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Spinner } from "@/components/ui/spinner"
 import { ScrollView } from "@/components/ui/scroll-view";
 import colors from "tailwindcss/colors"
-import { fetchDefaultBot } from '@/api/bots';
+import { fetchDefaultBot } from '@/api/supabase/bots';
 import { Tables } from '@/lib/supabase.types';
 import { Heading } from '@/components/ui/heading';
 

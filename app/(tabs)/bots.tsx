@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@/components/ui/box";
 import { Session } from '@supabase/supabase-js'
 import supabase from "../../lib/supabase"
-import { fetchDefaultBots } from "@/api/bots";
+import { fetchDefaultBots } from "@/api/supabase/bots";
 import { Spinner } from "@/components/ui/spinner"
 import colors from "tailwindcss/colors"
 import { Tables } from "@/lib/supabase.types";
@@ -11,7 +11,7 @@ import { ScrollView } from "@/components/ui/scroll-view";
 
 export default function BotsScreen() {
   const [session, setSession] = useState<Session | null>(null)
-  const [bots, setBots] = useState<Tables<'default_bots'>[]>([])
+  const [bots, setBots] = useState<Tables<'bots'>[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

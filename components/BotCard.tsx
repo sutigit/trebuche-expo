@@ -10,7 +10,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Pressable } from './ui/pressable';
 import { Session } from '@supabase/supabase-js'
 
-export default function BotCard({ bot, session }: { bot: Tables<'default_bots'>, session: Session | null }) {
+export default function BotCard({ bot, session }: { bot: Tables<'bots'>, session: Session | null }) {
     const router = useRouter()
     const [alert, setAlert] = useState(false)
 
