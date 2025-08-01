@@ -11,7 +11,7 @@ import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { StatusBar } from "expo-status-bar";
 import { Slot } from "expo-router";
 
-import "../global.css";
+import "@/global.css";
 import StarrySkyBG from "@/components/StarrySkyBG";
 
 export {
