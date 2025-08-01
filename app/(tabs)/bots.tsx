@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@/components/ui/box";
 import { Session } from '@supabase/supabase-js'
 import supabase from "../../lib/supabase"
-import { fetchDefaultBots } from "@/api/supabase/bots";
+import { fetchBots } from "@/api/supabase/bots";
 import { Spinner } from "@/components/ui/spinner"
 import colors from "tailwindcss/colors"
 import { Tables } from "@/lib/supabase.types";
 import BotCard from "@/components/BotCard";
+import { Text } from "@/components/ui/text";
 import { ScrollView } from "@/components/ui/scroll-view";
 
 export default function BotsScreen() {
   const [session, setSession] = useState<Session | null>(null)
-  const [bots, setBots] = useState<Tables<'bots'>[]>([])
+  const [bots, setBots] = useState<Tables<'bots'>[] | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -22,8 +23,12 @@ export default function BotsScreen() {
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
+  }, [])
 
-    fetchDefaultBots()
+  useEffect(() => {
+    if (!session || !session.user) return
+
+    fetchBots(session.user.id)
       .then((bots) => {
         setBots(bots)
       })
@@ -33,7 +38,16 @@ export default function BotsScreen() {
       .finally(() => {
         setLoading(false)
       })
-  }, [])
+
+  }, [session])
+
+  if (!session || !session.user) {
+    return (
+      <Box className="flex-1 justify-center items-center">
+        <Text>Kirjaudu</Text>
+      </Box>
+    )
+  }
 
   if (loading) {
     return (
@@ -47,7 +61,7 @@ export default function BotsScreen() {
     <Box className="max-h-screen flex-1 overflow-hidden pt-16 pb-[65px]">
       <ScrollView>
         <Box className="flex-1 pb-20 pt-5 px-4 gap-10">
-          {bots.map((bot, i) =>
+          {bots?.map((bot, i) =>
             (<BotCard key={i} bot={bot} session={session} />)
           )}
         </Box>

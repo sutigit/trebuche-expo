@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import Login from "@/components/Login";
 import Logout from "@/components/Logout";
 import { Session } from '@supabase/supabase-js'
-import supabase from "../../lib/supabase"
+import supabase from "@/lib/supabase"
 
 export default function ProfileScreen() {
   const [session, setSession] = useState<Session | null>(null)

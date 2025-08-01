@@ -1,23 +1,19 @@
 import { Tables } from "@/lib/supabase.types"
+import supabase from "@/lib/supabase"
 
-const base_url = process.env.EXPO_PUBLIC_API_URL_DEVELOPMENT
+export async function fetchBots(user_id: string): Promise<Tables<'bots'>[] | null> {
+    let { data: bots, error } = await supabase
+        .from('bots')
+        .select()
+    // .eq('id', user_id)
 
-export async function fetchDefaultBots(): Promise<Tables<'bots'>[]> {
-    try {
-        const res = await fetch(`${base_url}/bots/default`)
-        const { data } = await res.json()
-        return data
-    } catch (err) {
-        throw new Error(`Failed to fetch bots for user: ${err}`)
+    if (error) {
+        throw new Error(error.message)
     }
+
+    return bots
 }
 
-export async function fetchDefaultBot(id: string): Promise<Tables<'bots'>> {
-    try {
-        const res = await fetch(`${base_url}/bots/default/${id}`)
-        const { data } = await res.json()
-        return data
-    } catch (err) {
-        throw new Error(`Failed to fetch bots for user: ${err}`)
-    }
-}
+// export async function fetchDefaultBot(id: string): Promise<Tables<'bots'>> {
+
+// }
