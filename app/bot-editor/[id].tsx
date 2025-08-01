@@ -56,10 +56,10 @@ export default function BotEditor() {
 
         const normalizedId = Array.isArray(id) ? id[0] : id;
         fetchDefaultBot(normalizedId)
-            .then((bot: Tables<'default_bots'>) => {
+            .then((bot: Tables<'bots'>) => {
                 setName(bot.name)
                 setDescription(bot.description)
-                setInstructions(bot.instructions)
+                setInstructions(bot.prompt)
                 setColor(bot.color)
             })
             .catch((err) => {

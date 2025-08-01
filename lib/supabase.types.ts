@@ -14,105 +14,203 @@ export type Database = {
   }
   public: {
     Tables: {
+      bots: {
+        Row: {
+          archived: boolean
+          author_id: string | null
+          color: string
+          created_at: string
+          description: string
+          hidden: boolean
+          id: string
+          is_default: boolean
+          name: string
+          prompt: string
+          updated_at: string
+        }
+        Insert: {
+          archived?: boolean
+          author_id?: string | null
+          color: string
+          created_at?: string
+          description: string
+          hidden?: boolean
+          id?: string
+          is_default: boolean
+          name: string
+          prompt: string
+          updated_at?: string
+        }
+        Update: {
+          archived?: boolean
+          author_id?: string | null
+          color?: string
+          created_at?: string
+          description?: string
+          hidden?: boolean
+          id?: string
+          is_default?: boolean
+          name?: string
+          prompt?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       conversations: {
         Row: {
-          bots: number[]
-          content: Json | null
+          author_id: string
           created_at: string
-          description: string | null
+          description: string
           id: number
-          image_url: string | null
-          name: string | null
-          summary: string | null
-          updated_at: string | null
-          user_id: string | null
-        }
-        Insert: {
-          bots: number[]
-          content?: Json | null
-          created_at?: string
-          description?: string | null
-          id?: number
-          image_url?: string | null
-          name?: string | null
-          summary?: string | null
-          updated_at?: string | null
-          user_id?: string | null
-        }
-        Update: {
-          bots?: number[]
-          content?: Json | null
-          created_at?: string
-          description?: string | null
-          id?: number
-          image_url?: string | null
-          name?: string | null
-          summary?: string | null
-          updated_at?: string | null
-          user_id?: string | null
-        }
-        Relationships: []
-      }
-      default_bots: {
-        Row: {
-          color: string | null
-          created_at: string
-          description: string | null
-          id: number
-          instructions: string | null
-          name: string
+          published: boolean
+          title: string
           updated_at: string
         }
         Insert: {
-          color?: string | null
+          author_id: string
           created_at?: string
-          description?: string | null
+          description: string
           id?: number
-          instructions?: string | null
-          name: string
+          published?: boolean
+          title: string
           updated_at?: string
         }
         Update: {
-          color?: string | null
+          author_id?: string
           created_at?: string
-          description?: string | null
+          description?: string
           id?: number
-          instructions?: string | null
-          name?: string
+          published?: boolean
+          title?: string
           updated_at?: string
         }
         Relationships: []
       }
-      private_bots: {
+      "conversations.members.bots": {
         Row: {
-          color: string | null
-          created_at: string
-          description: string | null
+          author_id: string
+          bot_id: string
+          conversation_id: number
           id: number
-          instructions: string | null
-          name: string
-          updated_at: string
-          user_id: string | null
         }
         Insert: {
-          color?: string | null
-          created_at?: string
-          description?: string | null
+          author_id: string
+          bot_id: string
+          conversation_id: number
           id?: number
-          instructions?: string | null
-          name: string
-          updated_at?: string
-          user_id?: string | null
         }
         Update: {
-          color?: string | null
-          created_at?: string
-          description?: string | null
+          author_id?: string
+          bot_id?: string
+          conversation_id?: number
           id?: number
-          instructions?: string | null
-          name?: string
-          updated_at?: string
-          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversations.members.bots_bot_id_fkey"
+            columns: ["bot_id"]
+            isOneToOne: false
+            referencedRelation: "bots"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversations.members.bots_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      "conversations.messages.bots": {
+        Row: {
+          author_id: string
+          bot_id: string
+          conversation_id: number
+          created_at: string
+          id: number
+          message: string | null
+        }
+        Insert: {
+          author_id: string
+          bot_id: string
+          conversation_id: number
+          created_at?: string
+          id?: number
+          message?: string | null
+        }
+        Update: {
+          author_id?: string
+          bot_id?: string
+          conversation_id?: number
+          created_at?: string
+          id?: number
+          message?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversations.bots.messages_bot_id_fkey"
+            columns: ["bot_id"]
+            isOneToOne: false
+            referencedRelation: "bots"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversations.bots.messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      "conversations.messages.users": {
+        Row: {
+          author_id: string
+          conversation_id: number
+          created_at: string
+          id: number
+          message: string | null
+        }
+        Insert: {
+          author_id: string
+          conversation_id: number
+          created_at?: string
+          id?: number
+          message?: string | null
+        }
+        Update: {
+          author_id?: string
+          conversation_id?: number
+          created_at?: string
+          id?: number
+          message?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversation.user.messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          id: number
+          user_id: string
+          username: string
+        }
+        Insert: {
+          id?: number
+          user_id?: string
+          username: string
+        }
+        Update: {
+          id?: number
+          user_id?: string
+          username?: string
         }
         Relationships: []
       }
@@ -124,7 +222,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      "conversation participant role": "user" | "bot"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -251,6 +349,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      "conversation participant role": ["user", "bot"],
+    },
   },
 } as const
