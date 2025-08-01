@@ -1,11 +1,11 @@
 import { Tables } from "@/lib/supabase.types"
 import supabase from "@/lib/supabase"
 
-export async function fetchBots(user_id: string): Promise<Tables<'bots'>[] | null> {
+export async function fetchUsersBots(user_id: string): Promise<Tables<'bots'>[] | null> {
     let { data: bots, error } = await supabase
         .from('bots')
         .select()
-    // .eq('id', user_id)
+        .or(`author_id.eq.${user_id},is_default.eq.true`);
 
     if (error) {
         throw new Error(error.message)
@@ -13,7 +13,3 @@ export async function fetchBots(user_id: string): Promise<Tables<'bots'>[] | nul
 
     return bots
 }
-
-// export async function fetchDefaultBot(id: string): Promise<Tables<'bots'>> {
-
-// }

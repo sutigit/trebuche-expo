@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@/components/ui/box";
 import { Session } from '@supabase/supabase-js'
 import supabase from "../../lib/supabase"
-import { fetchBots } from "@/api/supabase/bots";
+import { fetchUsersBots } from "@/api/supabase/bots";
 import { Spinner } from "@/components/ui/spinner"
 import colors from "tailwindcss/colors"
 import { Tables } from "@/lib/supabase.types";
@@ -28,7 +28,7 @@ export default function BotsScreen() {
   useEffect(() => {
     if (!session || !session.user) return
 
-    fetchBots(session.user.id)
+    fetchUsersBots(session.user.id)
       .then((bots) => {
         setBots(bots)
       })

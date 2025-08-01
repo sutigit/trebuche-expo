@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@/components/ui/box";
 import { Heading } from "@/components/ui/heading"
 import { Image } from "@/components/ui/image"
-import { StatusBar } from "expo-status-bar";
 import Login from "@/components/Login";
 import Logout from "@/components/Logout";
 import { Session } from '@supabase/supabase-js'
