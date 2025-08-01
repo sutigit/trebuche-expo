@@ -4,20 +4,10 @@ import { Heading } from "@/components/ui/heading"
 import { Image } from "@/components/ui/image"
 import Login from "@/components/Login";
 import Logout from "@/components/Logout";
-import { Session } from '@supabase/supabase-js'
-import supabase from "@/lib/supabase"
+import { useSession } from "@/hooks/useSession";
 
 export default function ProfileScreen() {
-  const [session, setSession] = useState<Session | null>(null)
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
+  const session = useSession();
 
   return (
     <Box className="flex-1 pt-40 items-center bg-transparent">

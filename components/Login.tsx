@@ -4,7 +4,7 @@ import { Input, InputField } from "@/components/ui/input";
 import { VStack } from "@/components/ui/vstack";
 import { AlertCircleIcon } from "@/components/ui/icon";
 import React, { useState } from "react";
-import supabase from "../lib/supabase"
+import { signin } from "@/api/supabase/auth";
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -33,9 +33,9 @@ export default function Login() {
             setIsInvalidPassword(false)
         }
 
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
+        const { error } = await signin({
+            email,
+            password
         })
 
         if (error) {
@@ -46,9 +46,6 @@ export default function Login() {
             setIsInvalidCredentials(false)
         }
 
-        if (data) {
-            console.log("Moro", data.user.email)
-        }
         setLoading(false)
     }
 

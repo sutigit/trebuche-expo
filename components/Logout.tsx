@@ -6,10 +6,9 @@ import { FormControl, FormControlError, FormControlErrorText, FormControlErrorIc
 import { AlertCircleIcon } from "@/components/ui/icon";
 import { Spinner } from "@/components/ui/spinner"
 import colors from "tailwindcss/colors"
-
 import { User } from "@supabase/supabase-js";
-import supabase from "../lib/supabase"
 import { fetchProfile } from '@/api/supabase/profiles';
+import { signout } from '@/api/supabase/auth';
 
 export default function Logout({ user }: { user: User }) {
     const [loading, setLoading] = useState(true)
@@ -33,7 +32,7 @@ export default function Logout({ user }: { user: User }) {
 
     async function signOut() {
         setLoading(true)
-        let { error } = await supabase.auth.signOut();
+        let { error } = await signout();
 
         if (error) {
             setError(true)

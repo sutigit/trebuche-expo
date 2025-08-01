@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@/components/ui/box";
-import { Session } from '@supabase/supabase-js'
-import supabase from "../../lib/supabase"
 import { fetchUsersBots } from "@/api/supabase/bots";
 import { Spinner } from "@/components/ui/spinner"
 import colors from "tailwindcss/colors"
@@ -9,21 +7,12 @@ import { Tables } from "@/lib/supabase.types";
 import BotCard from "@/components/BotCard";
 import { Text } from "@/components/ui/text";
 import { ScrollView } from "@/components/ui/scroll-view";
+import { useSession } from "@/hooks/useSession";
 
 export default function BotsScreen() {
-  const [session, setSession] = useState<Session | null>(null)
+  const session = useSession();
   const [bots, setBots] = useState<Tables<'bots'>[] | null>(null)
   const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
 
   useEffect(() => {
     if (!session || !session.user) return
