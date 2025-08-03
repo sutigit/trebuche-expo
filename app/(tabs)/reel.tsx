@@ -37,7 +37,7 @@ export default function ReelScreen() {
 
   return (
     <Screen>
-      <Box className="flex-1 pb-20 pt-5 px-0 gap-10">
+      <Box className="flex-1 pb-20 pt-5 px-1 gap-10">
         {/* {conversations?.map((conversation, i) => (<ConversationCard key={i} conversation={conversation} />))} */}
         <ConversationCard conversation={conversations[0]} />
         <View className="border-b border-white/15" />
