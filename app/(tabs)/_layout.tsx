@@ -37,10 +37,17 @@ export default function TabLayout() {
       }}>
 
       <Tabs.Screen
-        name="ideas"
+        name="reel"
         options={{
-          title: 'Ideat',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="lightbulb-on" size={20} color={iconColor} />,
+          title: 'Selaa',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="script-text" size={20} color={iconColor} />,
+        }}
+      />
+      <Tabs.Screen
+        name="dashboard"
+        options={{
+          title: 'Luo',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="plus-circle" size={20} color={iconColor} />,
         }}
       />
       <Tabs.Screen
