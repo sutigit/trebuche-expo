@@ -8,6 +8,7 @@ import BotCard from "@/components/BotCard";
 import { Text } from "@/components/ui/text";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { useSession } from "@/hooks/useSession";
+import { View } from "react-native";
 
 export default function BotsScreen() {
   const session = useSession();
@@ -41,9 +42,11 @@ export default function BotsScreen() {
   return (
     <Box className="max-h-screen flex-1 overflow-hidden pt-16 pb-[65px]">
       <ScrollView>
-        <Box className="flex-1 pb-20 pt-5 px-4 gap-10">
+        <Box className="flex-1 pb-20 pt-5 px-4 gap-6">
           {bots?.map((bot, i) =>
-            (<BotCard key={i} bot={bot} session={session} />)
+          (
+            <BotCard key={i} bot={bot} session={session} />
+          )
           )}
         </Box>
       </ScrollView>

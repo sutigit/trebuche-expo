@@ -18,11 +18,14 @@ export default function ConversationCard({ conversation }: { conversation: Table
 
     const tools: { name: string; icon: ToolIconName, active: boolean }[] = [
         { name: "Kooste", icon: "script-text", active: true },
+        { name: "Kuvaus", icon: "image-text", active: false },
+        { name: "Suunnitelma", icon: "floor-plan", active: false },
+        { name: "Rahoitus", icon: "abacus", active: false },
         { name: "Botit", icon: "robot", active: false },
     ];
 
     return (
-        <Box className='px-5 gap-5'>
+        <Box className='px-4 gap-5'>
             <Text size='sm' >
                 @<Text size='sm' className='text-indigo-300'>sutikong</Text>
             </Text>
@@ -45,15 +48,12 @@ export default function ConversationCard({ conversation }: { conversation: Table
                     ))}
                 </Box>
             </Box>
-            <Box className='flex-row gap-6 self-end'>
+            {/* <Box className='flex-row gap-6 self-end'>
                 <Pressable className='flex-row gap-2 items-center'>
                     <MaterialCommunityIcons name="thumb-up" size={20} color={iconColor} />
                     <Text size='sm'>0</Text>
                 </Pressable>
-                <Pressable>
-                    <MaterialCommunityIcons name="chat" size={20} color={iconColor} />
-                </Pressable>
-            </Box>
+            </Box> */}
         </Box>
     )
 }

@@ -5,8 +5,10 @@ import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import colors from "tailwindcss/colors"
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 export default function TabLayout() {
+  const iconColor = useThemeColor({}, 'text')
 
   return (
     <Tabs
@@ -38,21 +40,21 @@ export default function TabLayout() {
         name="ideas"
         options={{
           title: 'Ideat',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="lightbulb-on" size={20} color={"rgb(229, 229, 231)"} />,
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="lightbulb-on" size={20} color={iconColor} />,
         }}
       />
       <Tabs.Screen
         name="bots"
         options={{
           title: 'Botit',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="robot-excited" size={20} color={"rgb(229, 229, 231)"} />,
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="robot" size={20} color={iconColor} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Buche',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="account-circle" size={20} color={"rgb(229, 229, 231)"} />,
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="account-circle" size={20} color={iconColor} />,
         }}
       />
     </Tabs>
