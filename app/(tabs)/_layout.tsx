@@ -40,11 +40,18 @@ export default function TabLayout() {
         name="reel"
         options={{
           title: 'Selaa',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="script-text" size={20} color={iconColor} />,
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="magnify" size={20} color={iconColor} />,
         }}
       />
       <Tabs.Screen
         name="dashboard"
+        options={{
+          title: 'Omat',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="script-text" size={20} color={iconColor} />,
+        }}
+      />
+      <Tabs.Screen
+        name="create"
         options={{
           title: 'Luo',
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="plus-circle" size={20} color={iconColor} />,
