@@ -29,9 +29,11 @@ export default function BotCard({ bot, session }: { bot: Tables<'bots'>, session
     return (
         <>
             <Box className='flex-row gap-5'>
-                <Box className='w-10 aspect-square rounded-full my-2' style={{ backgroundColor: bot.color ?? colors.zinc[200] }} />
+                <Box className='w-10 aspect-square rounded-xl my-1 justify-center items-center' style={{ backgroundColor: bot.color ?? colors.zinc[200] }}>
+                    <MaterialCommunityIcons name="robot" size={20} color={iconColor} />
+                </Box>
                 <Box className='flex-row justify-between border-b border-white/15 pb-5'>
-                    <Box className=' w-4/5'>
+                    <Box className=' w-5/6'>
                         <Heading size='md'>{bot.name}</Heading>
                         <Text size='sm' className='truncate line-clamp-2 mt-1'>{bot.description}</Text>
                     </Box>
@@ -40,32 +42,6 @@ export default function BotCard({ bot, session }: { bot: Tables<'bots'>, session
                     </Button>
                 </Box>
             </Box>
-            {/* <Box className="flex-row gap-12 justify-center items-center pt-5 pb-3">
-                <Pressable className=" h-6 w-16 flex justify-center items-center gap-2">
-                <Box className="flex-row gap-2 items-center h-5">
-
-                <Text size="xs">0</Text>
-                </Box>
-                <Text size="xs">Tykkää</Text>
-                </Pressable>
-                <Box className=" h-6 w-16 flex justify-center items-center gap-2">
-                <Box className="flex-row gap-2 items-center h-5">
-                <MaterialCommunityIcons name="brain" size={14} color={iconColor} />
-                <Text size="xs">0</Text>
-                </Box>
-                <Text size="xs">Käytetty</Text>
-                </Box>
-                <Pressable className=" h-6 w-16 flex justify-center items-center gap-2" onPress={handleClickBotEditor}>
-                <Box className="flex-row gap-2 items-center h-5">
-                <MaterialCommunityIcons name="pencil" size={14} color={iconColor} />
-                </Box>
-                <Text size="xs">Muokkaa</Text>
-                </Pressable>
-                </Box> */}
-            {/* <Button onPress={handleClickBotEditor} size='xs' className='self-end'>
-                <ButtonText>Muokkaa</ButtonText>
-                <ButtonIcon as={EditIcon} />
-                </Button> */}
             <LoginAlert isOpen={alert} handleClose={() => setAlert(false)} />
         </>
     )
