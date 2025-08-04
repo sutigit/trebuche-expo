@@ -27,7 +27,7 @@ export default function ConversationCard({ conversation }: { conversation: Table
     return (
         <Box className='px-4 gap-5'>
             <Text size='sm' >
-                @<Text size='sm' className='text-indigo-300'>sutikong</Text>
+                @<Text size='sm' className='text-indigo-300'>sutikong</Text> 1w
             </Text>
             <Heading>{conversation.title}</Heading>
             <Text className='py-2'>{conversation.description}</Text>
