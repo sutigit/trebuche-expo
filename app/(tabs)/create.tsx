@@ -14,11 +14,11 @@ export default function CreateScreen() {
             setAlert(true)
             setTimeout(() => {
                 setAlert(false)
-            }, 2000)
+            }, 5000)
         }
 
         console.log("📌", text)
-        setSending(true)
+        // setSending(true)
     }
 
     return (

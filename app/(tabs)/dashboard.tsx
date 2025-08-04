@@ -7,7 +7,7 @@ import { Box } from '@/components/ui/box'
 export default function DashboardScreen() {
 
     return (
-        <Screen background>
+        <Screen>
             <Box className='px-1 py-5'>
                 <Text>Dashbörd</Text>
             </Box>
